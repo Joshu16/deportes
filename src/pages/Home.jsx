@@ -11,14 +11,13 @@ function Home() {
       <Header />
 
       <main className="body">
-        <section className="hero-section">
-          <h1>Disfruta de las mejores instalaciones deportivas de Belén</h1>
-          <p>
-            Complejo Educativo CIT cumple con tus necesidades de entrenamiento y desarrollo deportivo.
-          </p>
-          <Link to="/reservar">
-            <button className="btn-hero">Reservar cancha</button>
-          </Link>
+        <section className="hero-section" style={{ backgroundImage: `url(${img1})` }}>
+          <div className="hero-overlay" />
+          <div className="hero-content">
+            <h1>Instalaciones deportivas en Belén</h1>
+            <p>Canchas, salón de danza y palcos VIP.</p>
+            <Link to="/reservar" className="btn-hero">Reservar</Link>
+          </div>
         </section>
 
         <section className="section intro-section">
@@ -81,9 +80,7 @@ function Home() {
             Salas acondicionadas para ballet, contemporáneo, folclore y más. Horarios flexibles.
           </p>
           <div className="service-card service-card--wide service-card--reverse">
-            <div className="service-card__image service-card__image--placeholder">
-              <span className="placeholder-icon">🎭</span>
-            </div>
+            <div className="service-card__image service-card__image--placeholder" />
             <div className="service-card__content">
               <h3>Salón de danza</h3>
               <p>Espejos, barras y piso adecuado. Capacidad para grupos e instructores externos.</p>
@@ -93,9 +90,7 @@ function Home() {
 
         <section className="section cta-section">
           <h2>¿Listo para reservar?</h2>
-          <Link to="/reservar">
-            <button className="btn-hero">Ir a reservas</button>
-          </Link>
+          <Link to="/reservar" className="btn-hero">Ir a reservas</Link>
         </section>
       </main>
 

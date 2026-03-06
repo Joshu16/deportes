@@ -4,7 +4,6 @@ function Header() {
   return (
     <header className="header">
       <Link to="/" className="logo-container">
-        <span className="logo-icon">⚽</span>
         <h2 className="header-logo">Complejo CIT</h2>
       </Link>
 
