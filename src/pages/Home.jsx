@@ -7,6 +7,9 @@ import img2 from "../assets/imagenes/img2.jpeg";
 import img3 from "../assets/imagenes/img3.jpeg";
 import img7 from "../assets/imagenes/img7.jpeg";
 import img6 from "../assets/imagenes/img6.jpeg";
+import img12 from "../assets/imagenes/img12.jpeg";
+import img18 from "../assets/imagenes/img18.jpeg";
+import img15 from "../assets/imagenes/img15.jpeg";
 
 function Home() {
   return (
@@ -17,7 +20,7 @@ function Home() {
         <section className="hero-section" style={{ backgroundImage: `url(${img1})` }}>
           <div className="hero-overlay" />
           <div className="hero-content">
-            <h1>Instalaciones deportivas en Belén</h1>
+            <h1>Mejores Instalaciones deportivas en Belén</h1>
             <p>Canchas, salón de danza y palcos VIP.</p>
             <Link to="/reservar" className="btn-hero">Reservar</Link>
           </div>
@@ -45,7 +48,7 @@ function Home() {
               <div className="vip-mini">
                 <h4>Palcos VIP</h4>
                 <p>Zona exclusiva con vista privilegiada, aire acondicionado y servicio de catering opcional.</p>
-                <img src={img6} alt="Palcos VIP" className="vip-mini__img" />
+              <img src={img12} alt="Palcos VIP" className="vip-mini__img" />
               </div>
             </div>
           </div>
@@ -68,7 +71,7 @@ function Home() {
             </div>
             <div className="service-card">
               <div className="service-card__image">
-                <img src={img2} alt="Cancha artificial 2" />
+              <img src={img15} alt="Cancha artificial 2" />
               </div>
               <div className="service-card__content">
                 <h3>Cancha artificial 2</h3>
@@ -85,7 +88,7 @@ function Home() {
           </p>
           <div className="service-card service-card--wide service-card--reverse">
             <div className="service-card__image">
-              <img src={img3} alt="Salón de danza" />
+              <img src={img18} alt="Salón de danza" />
             </div>
             <div className="service-card__content">
               <h3>Salón de danza</h3>

@@ -1,98 +1,109 @@
+import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
 
+const initialForm = {
+  nombre: "",
+  telefono: "",
+  servicio: "cancha-natural",
+  fecha: "",
+  hora: "",
+  notas: "",
+};
+
 function Reservar() {
+  const [form, setForm] = useState(initialForm);
+  const [enviado, setEnviado] = useState(false);
+
+  const resumen = useMemo(() => {
+    const parts = [];
+    if (form.servicio) parts.push(`Servicio: ${form.servicio}`);
+    if (form.fecha) parts.push(`Fecha: ${form.fecha}`);
+    if (form.hora) parts.push(`Hora: ${form.hora}`);
+    return parts.join(" · ");
+  }, [form.fecha, form.hora, form.servicio]);
+
+  function onChange(e) {
+    const { name, value } = e.target;
+    setEnviado(false);
+    setForm((prev) => ({ ...prev, [name]: value }));
+  }
+
+  function onSubmit(e) {
+    e.preventDefault();
+    setEnviado(true);
+  }
+
   return (
     <div className="page">
       <Header />
 
-      <main className="body body--reservar">
-        <section className="reservar-hero">
-          <h1>Reservar</h1>
-          <p>Elige instalación, fecha y horario. Te confirmamos al instante.</p>
+      <main className="body">
+        <section className="section intro-section">
+          <h1>Reservas</h1>
+          <p className="section-desc">
+            Completa el formulario y te contactamos para confirmar disponibilidad.
+          </p>
+          <p className="section-desc">
+            <Link to="/" className="header-link">Volver al inicio</Link>
+          </p>
         </section>
 
-        <section className="reservar-form-section">
-          <div className="reservar-card">
-            <h2>Nueva reserva</h2>
+        <section className="section">
+          <form className="service-card service-card--wide" onSubmit={onSubmit}>
+            <div className="service-card__content">
+              <div className="services-grid" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}>
+                <label>
+                  <span>Nombre</span>
+                  <input name="nombre" value={form.nombre} onChange={onChange} required />
+                </label>
 
-            <form className="reservar-form">
-              <div className="form-group">
-                <label htmlFor="instalacion">Instalación</label>
-                <select id="instalacion" name="instalacion">
-                  <option value="">Selecciona una opción</option>
-                  <option value="natural">Cancha natural (principal)</option>
-                  <option value="artificial-1">Cancha artificial 1</option>
-                  <option value="artificial-2">Cancha artificial 2</option>
-                  <option value="danza">Salón de danza</option>
-                  <option value="vip">Palco VIP</option>
-                </select>
-              </div>
+                <label>
+                  <span>Teléfono</span>
+                  <input name="telefono" value={form.telefono} onChange={onChange} required />
+                </label>
 
-              <div className="form-row">
-                <div className="form-group">
-                  <label htmlFor="fecha">Fecha</label>
-                  <input type="date" id="fecha" name="fecha" />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="hora">Hora</label>
-                  <select id="hora" name="hora">
-                    <option value="">Selecciona hora</option>
-                    <option value="08:00">08:00</option>
-                    <option value="09:00">09:00</option>
-                    <option value="10:00">10:00</option>
-                    <option value="11:00">11:00</option>
-                    <option value="12:00">12:00</option>
-                    <option value="13:00">13:00</option>
-                    <option value="14:00">14:00</option>
-                    <option value="15:00">15:00</option>
-                    <option value="16:00">16:00</option>
-                    <option value="17:00">17:00</option>
-                    <option value="18:00">18:00</option>
-                    <option value="19:00">19:00</option>
-                    <option value="20:00">20:00</option>
+                <label>
+                  <span>Servicio</span>
+                  <select name="servicio" value={form.servicio} onChange={onChange}>
+                    <option value="cancha-natural">Cancha natural</option>
+                    <option value="cancha-artificial-1">Cancha artificial 1</option>
+                    <option value="cancha-artificial-2">Cancha artificial 2</option>
+                    <option value="danza">Salón de danza</option>
+                    <option value="palcos-vip">Palcos VIP</option>
                   </select>
-                </div>
+                </label>
+
+                <label>
+                  <span>Fecha</span>
+                  <input type="date" name="fecha" value={form.fecha} onChange={onChange} required />
+                </label>
+
+                <label>
+                  <span>Hora</span>
+                  <input type="time" name="hora" value={form.hora} onChange={onChange} required />
+                </label>
               </div>
 
-              <div className="form-group">
-                <label htmlFor="duracion">Duración</label>
-                <select id="duracion" name="duracion">
-                  <option value="1">1 hora</option>
-                  <option value="2">2 horas</option>
-                  <option value="3">3 horas</option>
-                </select>
+              <label style={{ display: "block", marginTop: 12 }}>
+                <span>Notas</span>
+                <textarea name="notas" value={form.notas} onChange={onChange} rows={4} />
+              </label>
+
+              <div style={{ display: "flex", gap: 12, alignItems: "center", marginTop: 16, flexWrap: "wrap" }}>
+                <button type="submit" className="btn-hero">Enviar solicitud</button>
+                {resumen ? <span className="section-desc">{resumen}</span> : null}
               </div>
 
-              <div className="form-group">
-                <label htmlFor="nombre">Nombre</label>
-                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" />
-              </div>
-              <div className="form-group">
-                <label htmlFor="contacto">Teléfono o correo</label>
-                <input type="text" id="contacto" name="contacto" placeholder="Contacto" />
-              </div>
-              <div className="form-group">
-                <label htmlFor="notas">Notas (opcional)</label>
-                <textarea id="notas" name="notas" rows="3" placeholder="Comentarios o requisitos especiales" />
-              </div>
-
-              <button type="submit" className="btn-submit">Solicitar reserva</button>
-            </form>
-          </div>
-
-          <div className="reservar-info">
-            <h3>Horarios</h3>
-            <p>Lunes a domingo, 8:00 – 20:00</p>
-            <h3>Contacto</h3>
-            <p>Complejo Educativo CIT – Belén</p>
-          </div>
+              {enviado ? (
+                <p className="section-desc" style={{ marginTop: 12 }}>
+                  Listo: recibimos tu solicitud. Si quieres, también puedes escribirnos por WhatsApp con estos datos.
+                </p>
+              ) : null}
+            </div>
+          </form>
         </section>
-
-        <div className="reservar-back">
-          <Link to="/">← Volver al inicio</Link>
-        </div>
       </main>
 
       <Footer />
