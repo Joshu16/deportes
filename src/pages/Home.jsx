@@ -4,6 +4,9 @@ import Footer from "../components/Footer.jsx";
 
 import img1 from "../assets/imagenes/img.jpeg";
 import img2 from "../assets/imagenes/img2.jpeg";
+import img3 from "../assets/imagenes/img3.jpeg";
+import img7 from "../assets/imagenes/img7.jpeg";
+import img6 from "../assets/imagenes/img6.jpeg";
 
 function Home() {
   return (
@@ -34,7 +37,7 @@ function Home() {
           </p>
           <div className="service-card service-card--wide">
             <div className="service-card__image">
-              <img src={img1} alt="Cancha natural" />
+              <img src={img7} alt="Cancha natural" />
             </div>
             <div className="service-card__content">
               <h3>Cancha principal</h3>
@@ -42,6 +45,7 @@ function Home() {
               <div className="vip-mini">
                 <h4>Palcos VIP</h4>
                 <p>Zona exclusiva con vista privilegiada, aire acondicionado y servicio de catering opcional.</p>
+                <img src={img6} alt="Palcos VIP" className="vip-mini__img" />
               </div>
             </div>
           </div>
@@ -80,7 +84,9 @@ function Home() {
             Salas acondicionadas para ballet, contemporáneo, folclore y más. Horarios flexibles.
           </p>
           <div className="service-card service-card--wide service-card--reverse">
-            <div className="service-card__image service-card__image--placeholder" />
+            <div className="service-card__image">
+              <img src={img3} alt="Salón de danza" />
+            </div>
             <div className="service-card__content">
               <h3>Salón de danza</h3>
               <p>Espejos, barras y piso adecuado. Capacidad para grupos e instructores externos.</p>

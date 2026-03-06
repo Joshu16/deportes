@@ -34,7 +34,7 @@ body {
   text-align: center;
 }
 
-/* ---- HEADER ---- */
+/* header */
 .header {
   width: 100%;
   display: flex;
@@ -87,7 +87,7 @@ body {
   color: #0d0d0d;
 }
 
-/* ---- FOOTER ---- */
+/* footer */
 .footer {
   width: 100%;
   background: #0d0d0d;
@@ -97,7 +97,7 @@ body {
   font-size: 0.85rem;
 }
 
-/* ---- HERO ---- */
+/* hero */
 .hero-section {
   position: relative;
   width: 100%;
@@ -158,7 +158,7 @@ body {
   color: #0d0d0d;
 }
 
-/* ---- SECTIONS ---- */
+/* secciones */
 .section {
   width: 100%;
   padding: 4rem 1.5rem;
@@ -221,7 +221,7 @@ body {
   color: #0d0d0d;
 }
 
-/* ---- SERVICE CARDS ---- */
+/* servicios*/
 .service-card {
   width: 100%;
   background: #fff;
@@ -237,12 +237,6 @@ body {
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
-}
-
-@media (max-width: 700px) {
-  .service-card--wide {
-    grid-template-columns: 1fr;
-  }
 }
 
 .service-card--reverse .service-card__image {
@@ -287,7 +281,7 @@ body {
   line-height: 1.55;
 }
 
-/* VIP mini */
+/* palcos vip */
 .vip-mini {
   margin-top: 1.25rem;
   padding-top: 1rem;
@@ -305,7 +299,19 @@ body {
   color: #666;
 }
 
-/* Two fields grid */
+/* imagen de palcos vip */
+.vip-mini__img {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-top: 0.75rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* grid dos canchas */
 .services-grid.two-fields {
   width: 100%;
   max-width: 1200px;
@@ -315,13 +321,7 @@ body {
   gap: 1.5rem;
 }
 
-@media (max-width: 600px) {
-  .services-grid.two-fields {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ---- RESERVAR PAGE ---- */
+/* página reservar */
 .body--reservar {
   padding: 2rem;
 }
@@ -402,12 +402,6 @@ body {
   gap: 1rem;
 }
 
-@media (max-width: 480px) {
-  .form-row {
-    grid-template-columns: 1fr;
-  }
-}
-
 .btn-submit {
   background: #0d0d0d;
   color: #fff;
@@ -461,7 +455,7 @@ body {
   color: #0d0d0d;
 }
 
-/* Cards (legacy) */
+/* cards */
 .cards {
   margin-top: 30px;
   display: flex;
