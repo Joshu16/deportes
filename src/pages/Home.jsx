@@ -85,7 +85,7 @@ function Home() {
               </div>
               <div className="tarjeta-txt">
                 <h3>Cancha artificial 2</h3>
-                <p>Mismas condiciones que la cancha 1.</p>
+                <p>Mismas condiciones que la cancha 1</p>
               </div>
             </div>
           </div>
