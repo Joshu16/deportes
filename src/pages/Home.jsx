@@ -67,7 +67,7 @@ function Home() {
         <section className="sec artificial">
           <h2>Categoría artificial</h2>
           <p className="desc">
-            Dos canchas de césped sintético.
+            Dos canchas artificiales.
           </p>
           <div className="grid grid-2">
             <div className="tarjeta">
