@@ -2,14 +2,14 @@ import { Link } from "react-router-dom";
 
 function Header() {
   return (
-    <header className="header">
-      <Link to="/" className="logo-container">
-        <h2 className="header-logo">Complejo CIT</h2>
+    <header className="nav">
+      <Link to="/" className="logo">
+        <h2 className="logo-txt">Complejo CIT</h2>
       </Link>
 
-      <nav className="header-nav">
-        <Link to="/" className="header-link">Inicio</Link>
-        <Link to="/reservar" className="header-link header-link--cta">Reservar</Link>
+      <nav className="links">
+        <Link to="/" className="link">Inicio</Link>
+        <Link to="/reservar" className="link btn">Reservar</Link>
       </nav>
     </header>
   );

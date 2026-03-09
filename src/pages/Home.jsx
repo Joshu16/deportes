@@ -5,11 +5,21 @@ import Footer from "../components/Footer.jsx";
 import img1 from "../assets/imagenes/img.jpeg";
 import img2 from "../assets/imagenes/img2.jpeg";
 import img3 from "../assets/imagenes/img3.jpeg";
-import img7 from "../assets/imagenes/img7.jpeg";
+import img4 from "../assets/imagenes/img4.jpeg";
+import img5 from "../assets/imagenes/img5.jpeg";
 import img6 from "../assets/imagenes/img6.jpeg";
+import img7 from "../assets/imagenes/img7.jpeg";
+import img8 from "../assets/imagenes/img8.jpeg";
+import img9 from "../assets/imagenes/img9.jpeg";
+import img10 from "../assets/imagenes/img10.jpeg";
+import img11 from "../assets/imagenes/img11.jpeg";
 import img12 from "../assets/imagenes/img12.jpeg";
-import img18 from "../assets/imagenes/img18.jpeg";
+import img13 from "../assets/imagenes/img13.jpeg";
+import img14 from "../assets/imagenes/img14.jpeg";
 import img15 from "../assets/imagenes/img15.jpeg";
+import img16 from "../assets/imagenes/img16.jpeg";
+import img17 from "../assets/imagenes/img17.jpeg";
+import img18 from "../assets/imagenes/img18.jpeg";
 
 function Home() {
   return (
@@ -17,89 +27,113 @@ function Home() {
       <Header />
 
       <main className="body">
-        <section className="hero-section" style={{ backgroundImage: `url(${img1})` }}>
-          <div className="hero-overlay" />
-          <div className="hero-content">
+        <section className="hero" style={{ backgroundImage: `url(${img1})` }}>
+          <div className="overlay" />
+          <div className="hero-caja">
             <h1>Mejores Instalaciones deportivas en Belén</h1>
-            <p>Canchas, salón de danza y palcos VIP.</p>
-            <Link to="/reservar" className="btn-hero">Reservar</Link>
+            <p>Canchas, salón de baile y poll dance  y palcos VIP hasta para los pobres.</p>
+            <Link to="/reservar" className="btn">Reservar</Link>
           </div>
         </section>
 
-        <section className="section intro-section">
+        <section className="sec intro">
           <h2>Canchas de fútbol</h2>
-          <p className="section-desc">
-            Contamos con canchas de césped natural y artificial, ideales para torneos, entrenamientos y partidos amistosos.
+          <p className="desc">
+            Contamos con las mejores canchas naturales y artificial, para realizar los mejores torneos en belen.
           </p>
         </section>
 
-        <section className="section category-section natural">
+        <section className="sec natural">
           <h2>Categoría natural</h2>
-          <p className="section-desc">
-            Cancha de césped natural, mantenimiento profesional y medidas reglamentarias.
+          <p className="desc">
+            Cancha natural, estas canchas tienen mantenimiento profesional por si pasa algo.
           </p>
-          <div className="service-card service-card--wide">
-            <div className="service-card__image">
+          <div className="tarjeta tarjeta-wide">
+            <div className="tarjeta-img">
               <img src={img7} alt="Cancha natural" />
             </div>
-            <div className="service-card__content">
+            <div className="tarjeta-txt">
               <h3>Cancha principal</h3>
-              <p>Ideal para partidos oficiales y eventos. Iluminación y graderías disponibles.</p>
-              <div className="vip-mini">
+              <p>Partidos serios y para jugar con tus amigosss.</p>
+              <div className="vip">
                 <h4>Palcos VIP</h4>
-                <p>Zona exclusiva con vista privilegiada, aire acondicionado y servicio de catering opcional.</p>
-              <img src={img12} alt="Palcos VIP" className="vip-mini__img" />
+                <p>Zona exclusiva, servicio de soda armonia opcional.</p>
+                <img src={img12} alt="Palcos VIP" className="vip-img" />
               </div>
             </div>
           </div>
         </section>
 
-        <section className="section category-section artificial">
+        <section className="sec artificial">
           <h2>Categoría artificial</h2>
-          <p className="section-desc">
-            Dos canchas de césped sintético, listas para usar en cualquier clima.
+          <p className="desc">
+            Dos canchas de césped sintético.
           </p>
-          <div className="services-grid two-fields">
-            <div className="service-card">
-              <div className="service-card__image">
+          <div className="grid grid-2">
+            <div className="tarjeta">
+              <div className="tarjeta-img">
                 <img src={img2} alt="Cancha artificial 1" />
               </div>
-              <div className="service-card__content">
+              <div className="tarjeta-txt">
                 <h3>Cancha artificial 1</h3>
-                <p>Uso intensivo, drenaje excelente. Perfecta para torneos y clases.</p>
+                <p>Perfecta para torneos y clases tiene gradería y todo.</p>
               </div>
             </div>
-            <div className="service-card">
-              <div className="service-card__image">
-              <img src={img15} alt="Cancha artificial 2" />
+            <div className="tarjeta">
+              <div className="tarjeta-img">
+                <img src={img15} alt="Cancha artificial 2" />
               </div>
-              <div className="service-card__content">
+              <div className="tarjeta-txt">
                 <h3>Cancha artificial 2</h3>
-                <p>Mismas condiciones que la cancha 1. Reserva doble para eventos grandes.</p>
+                <p>Mismas condiciones que la cancha 1.</p>
               </div>
             </div>
           </div>
         </section>
 
-        <section className="section dance-section">
+        <section className="sec dance">
           <h2>Clases de danza</h2>
-          <p className="section-desc">
-            Salas acondicionadas para ballet, contemporáneo, folclore y más. Horarios flexibles.
+          <p className="desc">
+            Telas para bailar
           </p>
-          <div className="service-card service-card--wide service-card--reverse">
-            <div className="service-card__image">
+          <div className="tarjeta tarjeta-wide tarjeta-rev">
+            <div className="tarjeta-img">
               <img src={img18} alt="Salón de danza" />
             </div>
-            <div className="service-card__content">
+            <div className="tarjeta-txt">
               <h3>Salón de danza</h3>
-              <p>Espejos, barras y piso adecuado. Capacidad para grupos e instructores externos.</p>
+              <p>Para que todos podamos bailar y hacer poll dance como Campe. Misma locacion de las canchas, contamos con areas de descanso que se ven en la seccion de inicio</p>
             </div>
           </div>
         </section>
 
-        <section className="section cta-section">
+        <section className="sec cta">
           <h2>¿Listo para reservar?</h2>
-          <Link to="/reservar" className="btn-hero">Ir a reservas</Link>
+          <Link to="/reservar" className="btn">Ir a reservas</Link>
+        </section>
+
+        <section className="sec galeria">
+          <h2>Galería</h2>
+          <div className="fotos">
+            <img src={img1} alt="Instalaciones" />
+            <img src={img2} alt="Cancha artificial 1" />
+            <img src={img3} alt="Instalaciones" />
+            <img src={img4} alt="Instalaciones" />
+            <img src={img5} alt="Instalaciones" />
+            <img src={img6} alt="Instalaciones" />
+            <img src={img7} alt="Cancha natural" />
+            <img src={img8} alt="Instalaciones" />
+            <img src={img9} alt="Instalaciones" />
+            <img src={img10} alt="Instalaciones" />
+            <img src={img11} alt="Instalaciones" />
+            <img src={img12} alt="Palcos VIP" />
+            <img src={img13} alt="Instalaciones" />
+            <img src={img14} alt="Instalaciones" />
+            <img src={img15} alt="Cancha artificial 2" />
+            <img src={img16} alt="Instalaciones" />
+            <img src={img17} alt="Instalaciones" />
+            <img src={img18} alt="Salón de danza" />
+          </div>
         </section>
       </main>
 
