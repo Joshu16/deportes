@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
+import { supabase } from "../lib/supabaseClient.js";
 
 import img1 from "../assets/imagenes/img.jpeg";
 import img2 from "../assets/imagenes/img2.jpeg";
@@ -22,6 +24,59 @@ import img17 from "../assets/imagenes/img17.jpeg";
 import img18 from "../assets/imagenes/img18.jpeg";
 
 function Home() {
+  const [estadisticasReservas, setEstadisticasReservas] = useState({
+    total: 0,
+    proxima: null,
+    loading: true,
+    error: "",
+  });
+
+  useEffect(() => {
+    async function cargarReservas() {
+      const { count, error: countError } = await supabase
+        .from("reservas")
+        .select("*", { count: "exact", head: true });
+
+      if (countError) {
+        setEstadisticasReservas({
+          total: 0,
+          proxima: null,
+          loading: false,
+          error:
+            "No se pudo leer reservas desde Supabase. Revisa tabla/policies en reservas.",
+        });
+        return;
+      }
+
+      const { data: proximas, error: proximaError } = await supabase
+        .from("reservas")
+        .select("servicio, fecha, hora")
+        .gte("fecha", new Date().toISOString().slice(0, 10))
+        .order("fecha", { ascending: true })
+        .order("hora", { ascending: true })
+        .limit(1);
+
+      if (proximaError) {
+        setEstadisticasReservas({
+          total: count ?? 0,
+          proxima: null,
+          loading: false,
+          error: "Reservas cargadas parcialmente.",
+        });
+        return;
+      }
+
+      setEstadisticasReservas({
+        total: count ?? 0,
+        proxima: proximas?.[0] ?? null,
+        loading: false,
+        error: "",
+      });
+    }
+
+    cargarReservas();
+  }, []);
+
   return (
     <div className="page">
       <Header />
@@ -84,7 +139,7 @@ function Home() {
                 <img src={img15} alt="Cancha artificial 2" />
               </div>
               <div className="tarjeta-txt">
-                <h3>Cancha artificial 2</h3>
+                <h3>Canchza artificial 2</h3>
                 <p>Mismas condiciones que la cancha 1</p>
               </div>
             </div>
@@ -109,6 +164,20 @@ function Home() {
 
         <section className="sec cta">
           <h2>¿Listo para reservar?</h2>
+          {estadisticasReservas.loading && (
+            <p className="desc">Cargando datos de reservas...</p>
+          )}
+          {!estadisticasReservas.loading && !estadisticasReservas.error && (
+            <p className="desc">
+              Reservas registradas: {estadisticasReservas.total}
+              {estadisticasReservas.proxima
+                ? ` | Próxima: ${estadisticasReservas.proxima.servicio} (${estadisticasReservas.proxima.fecha} ${estadisticasReservas.proxima.hora})`
+                : " | Sin próximas reservas"}
+            </p>
+          )}
+          {!estadisticasReservas.loading && estadisticasReservas.error && (
+            <p className="desc">{estadisticasReservas.error}</p>
+          )}
           <Link to="/reservar" className="btn">Ir a reservas</Link>
         </section>
 

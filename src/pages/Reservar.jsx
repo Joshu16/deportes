@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "../components/Header.jsx";
+import { supabase } from "../lib/supabaseClient.js";
 import Footer from "../components/Footer.jsx";
 
 function Reservar() {
@@ -12,14 +13,48 @@ function Reservar() {
     hora: "",
     notas: "",
   });
+  const [loading, setLoading] = useState(false);
+  const [mensaje, setMensaje] = useState("");
+  const [error, setError] = useState("");
 
   function onChange(e) {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   }
 
-  function onSubmit(e) {
+  async function onSubmit(e) {
     e.preventDefault();
+    setLoading(true);
+    setMensaje("");
+    setError("");
+
+    const payload = { 
+      nombre: form.nombre.trim(),
+      telefono: form.telefono.trim(),
+      servicio: form.servicio,
+      fecha: form.fecha,
+      hora: form.hora,
+      notas: form.notas.trim() || null,
+    };
+
+    const { error: insertError } = await supabase.from("reservas").insert([payload]);
+
+    if (insertError) {
+      setError(`No se pudo guardar la reserva: ${insertError.message}`);
+      setLoading(false);
+      return;
+    }
+
+    setMensaje("Reserva enviada con éxito. Te contactaremos para confirmar. Yupiiii");
+    setForm({
+      nombre: "",
+      telefono: "",
+      servicio: "cancha-natural",
+      fecha: "",
+      hora: "",
+      notas: "",
+    });
+    setLoading(false);
   }
 
   return (
@@ -71,7 +106,11 @@ function Reservar() {
               <span>Notas</span>
               <textarea name="notas" value={form.notas} onChange={onChange} rows={4} />
             </label>
-            <button type="submit" className="btn">Enviar solicitud</button>
+            <button type="submit" className="btn" disabled={loading}>
+              {loading ? "Enviando..." : "Enviar solicitud"}
+              {mensaje && <p className="desc">{mensaje}</p>}
+              {error && <p className="desc">{error}</p>}
+            </button>
           </form>
         </section>
       </main>
